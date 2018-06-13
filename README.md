@@ -39,7 +39,7 @@ Add-Content -Encoding Byte -Path $file -Value $pvfile.Content -Stream 'powerview
 Invoke-Expression (Get-Content -Path $file -Stream 'powerview' -Raw)
 ```
 
-Taking things further I out together a PowerShell script that creates a random filename with a randomish amount of random content and a random ADS name. The script asks the user for the uri of the payload to download and embed into the freshly created file. Also in this example the dowload process is able to detect webproxy settings and use the current users credentials, (Proxy Aware).
+Taking things further I put together a PowerShell script that creates a random filename with a randomish amount of random content and a random ADS name. The script asks the user for the uri of the payload to download and embed into the freshly created file. Also in this example the dowload process is able to detect webproxy settings and use the current users credentials, (Proxy Aware).
 
 ## The script should be ran . sourced i.e.
 ```powershell
