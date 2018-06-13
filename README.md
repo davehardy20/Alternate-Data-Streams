@@ -1,6 +1,6 @@
 # Alternate-Data-Streams with PowerShell
 
-I literally stumbled upon this whislt reading up on the parameters for the Get-Content and Set-Content cmdlets for another piece of research.
+I literally stumbled upon this whilst reading up on the parameters for the Get-Content and Set-Content cmdlets for another piece of research.
 The paramemeter that got my interest is -Stream which allows the user the ability to read and write NTFS alternate data streams.
 If we create a file with the following commands;
 ```powershell
