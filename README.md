@@ -26,7 +26,7 @@ Get-Content -Path $file -Stream 'hiddenstream'
 ```
 ## Something More Useful
 This is great, however not so much use, so what if we could hide something a touch more useful, say PowerView?
-Taking the simple Proof of Concept - alternate-data-stream.txt from the repository, we create a new file as above, put some content in the file, however we now dowload a payload, (PowerView.ps1 in this example), from a webserver we control and hide it in an NFTS Alternate Data Stream, (called powerview).Finally we grab the content from the ADS and execute it.
+Taking the simple Proof of Concept - alternate-data-stream.txt from the repository, we create a new file as above, put some content in the file, however we now download a payload, (PowerView.ps1 in this example), from a webserver we control and hide it in an NFTS Alternate Data Stream, (called powerview).Finally we grab the content from the ADS and execute it.
 
 ```powershell
 $file = "$env:TEMP\test.txt"
@@ -45,3 +45,4 @@ Taking things further I put together a PowerShell script that creates a random f
 ```powershell
 . ./Invoke-ADS.ps1
 ```
+Further uses could be to download a payload, say a standard PoshC2 or Empire base64 encoded payload and hide it in a file and use this as the intial foothold and a persistence method.
