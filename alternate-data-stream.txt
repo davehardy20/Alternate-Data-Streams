@@ -1,5 +1,3 @@
-This seems to work OK
-=====================
 
 $file = "$env:TEMP\test.txt"
 Set-Content -Path $file -Value 'Alternate Data Stream Test File'
